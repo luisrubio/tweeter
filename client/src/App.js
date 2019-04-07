@@ -1,29 +1,15 @@
 import React, { Component } from "react";
-import Pulse from "react-reveal/Pulse";
 import "./App.css";
+
+import Header from "./components/Header";
+import TweetForm from "./components/TweetForm";
 
 class App extends Component {
   render() {
     return (
-      <div className="container">
-        <h1 className="title is-1" data-aos="fade-up">
-          Tweeter
-        </h1>
-        <Pulse>
-          <div className="columns">
-            <div className="column">
-              <div className="field">
-                <div className="control">
-                  <input
-                    className="input is-primary"
-                    type="text"
-                    placeholder="Write what you want to tweet to the public!"
-                  />
-                </div>
-              </div>
-            </div>
-          </div>
-        </Pulse>
+      <div>
+        <Header />
+        <TweetForm />
       </div>
     );
   }

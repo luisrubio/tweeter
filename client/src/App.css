@@ -2,7 +2,6 @@ body {
   background: #333;
   min-height: 100vh;
   color: #fff;
-  padding-top: 30px;
 }
 
 .title {
@@ -10,11 +9,31 @@ body {
   text-align: center;
 }
 
-.input {
+.textarea {
   background: rgb(43, 43, 43);
+  color: #fff;
+  resize: none;
+}
+
+.textarea::placeholder {
   color: #fff;
 }
 
-.input::placeholder {
-  color: #fff;
+.is-primary {
+  border-color: #6c5ce7;
+}
+
+.header {
+  background: #209cee;
+  padding: 20px;
+  margin-bottom: 30px;
+  font-family: "Lobster", cursive;
+}
+
+.container {
+  max-width: 500px;
+}
+
+.button {
+  font-weight: bold;
 }
