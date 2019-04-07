@@ -37,3 +37,7 @@ body {
 .button {
   font-weight: bold;
 }
+
+.item {
+  background: rgb(61, 61, 61);
+}
