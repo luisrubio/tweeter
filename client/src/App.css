@@ -39,5 +39,20 @@ body {
 }
 
 .item {
-  background: rgb(61, 61, 61);
+  background: rgb(70, 70, 70);
+  padding: 10px;
+  margin-bottom: 1px;
+}
+
+.message-box {
+  font-size: 1.4em;
+}
+
+.handle-text {
+  color: #aaa;
+}
+
+.tweet-info {
+  padding-top: 4px;
+  font-size: 0.9em;
 }

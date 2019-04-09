@@ -9,20 +9,20 @@ class TweetFeed extends Component {
         {
           text: "I love tweeeter!",
           author: "Jacob Smith",
-          create_at: 1554620855205,
-          handle: "@Jacob_Smith"
+          created_at: 1554620855205,
+          handle: "Jacob_Smith"
         },
         {
-          text: "I love tweeeter!",
-          author: "Jacob Smith",
-          create_at: 1554620855205,
-          handle: "@Jacob_Smith"
+          text: "Tweet tweet tweet",
+          author: "Jacki Chan",
+          created_at: 1554620855205,
+          handle: "jackiechan"
         }
       ]
     };
   }
   render() {
-    return this.state.posts.map(post => <TweetItem />);
+    return this.state.posts.map(post => <TweetItem post={post} />);
   }
 }
 
