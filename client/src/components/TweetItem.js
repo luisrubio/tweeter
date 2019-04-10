@@ -20,7 +20,8 @@ const TweetItem = props => {
   return (
     <div className="item">
       <div className="v-align">
-        <img src={props.post.avatar} width="30" alt="" /> {props.post.name}{" "}
+        <img class="avatar" src={props.post.avatar} width="30" alt="" />{" "}
+        {props.post.name}{" "}
         <span className="handle-text">@{props.post.handle}</span>
       </div>
 

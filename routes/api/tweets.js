@@ -1,5 +1,6 @@
 const express = require("express");
 const router = express.Router();
+const faker = require("faker");
 
 // Models
 const Tweet = require("../../models/Tweet");
@@ -26,9 +27,9 @@ router.get("/", (req, res) => {
 // @access    Public
 router.post("/", (req, res) => {
   const newTweet = new Tweet({
-    name: "John Smith",
-    handle: "John_Smith",
-    avatar: "https://vanillicon.com/v2/2adc83bfb66efdc08b3d049a160c316a.svg",
+    name: faker.name.findName(),
+    handle: faker.internet.userName(),
+    avatar: faker.image.avatar(),
     tweet: req.body.tweet
   });
 

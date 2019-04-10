@@ -67,3 +67,7 @@ body {
 .fa-comment-alt {
   padding-right: 2px;
 }
+
+.avatar {
+  border-radius: 20px;
+}

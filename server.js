@@ -23,7 +23,9 @@ mongoose
     console.log(err);
   });
 
-app.get("/", (req, res) => res.send("Hello World!"));
+app.get("/", (req, res) => {
+  res.send("Hello World!");
+});
 
 app.use("/api/tweets", tweets);
 
