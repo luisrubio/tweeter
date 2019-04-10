@@ -27,4 +27,4 @@ app.get("/", (req, res) => res.send("Hello World!"));
 
 app.use("/api/tweets", tweets);
 
-app.listen(port, () => console.log(`Example app listening on port ${port}!`));
+app.listen(port, () => console.log(`Tweeter App listening on port ${port}!`));
