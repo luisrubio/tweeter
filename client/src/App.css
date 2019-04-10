@@ -58,3 +58,12 @@ body {
   padding-top: 4px;
   font-size: 0.9em;
 }
+
+.fa-heart {
+  padding-left: 10px;
+}
+
+.fa-heart,
+.fa-comment-alt {
+  padding-right: 2px;
+}

@@ -1,28 +1,32 @@
 import React, { Component } from "react";
+import axios from "axios";
+
 import TweetItem from "./TweetItem";
 
 class TweetFeed extends Component {
   constructor() {
     super();
     this.state = {
-      posts: [
-        {
-          text: "I love tweeeter!",
-          author: "Jacob Smith",
-          created_at: 1554620855205,
-          handle: "Jacob_Smith"
-        },
-        {
-          text: "Tweet tweet tweet",
-          author: "Jacki Chan",
-          created_at: 1554620855205,
-          handle: "jackiechan"
-        }
-      ]
+      posts: []
     };
   }
+
+  componentDidMount() {
+    axios
+      .get("/api/tweets")
+      .then(response => {
+        console.log(response.data);
+        this.setState({ posts: response.data });
+      })
+      .catch(err => {
+        console.log(err);
+      });
+  }
+
   render() {
-    return this.state.posts.map(post => <TweetItem post={post} />);
+    return this.state.posts.map(post => (
+      <TweetItem key={post._id} post={post} />
+    ));
   }
 }
 

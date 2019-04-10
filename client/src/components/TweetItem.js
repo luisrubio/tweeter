@@ -1,27 +1,39 @@
 import React from "react";
 
 const TweetItem = props => {
+  const months = [
+    "January",
+    "February",
+    "March",
+    "April",
+    "May",
+    "June",
+    "July",
+    "August",
+    "September",
+    "October",
+    "November",
+    "December"
+  ];
+  const d = new Date(props.post.date);
+  const date = d.getDate() + " " + months[d.getMonth()] + " " + d.getFullYear();
   return (
     <div className="item">
-      <div class="v-align">
-        <img
-          src="https://vanillicon.com/v2/1f48183467719c8b709469bd0af588ff.svg"
-          width="30"
-          alt=""
-        />{" "}
-        {props.post.author}{" "}
+      <div className="v-align">
+        <img src={props.post.avatar} width="30" alt="" /> {props.post.name}{" "}
         <span className="handle-text">@{props.post.handle}</span>
       </div>
 
       <div className="message-box">
-        <h3>{props.post.text}</h3>
+        <h3>{props.post.tweet}</h3>
       </div>
 
-      <div class="columns tweet-info">
-        <div class="column">
-          <i class="far fa-comment-alt" /> 2 <i class="far fa-heart" /> 4
+      <div className="columns tweet-info">
+        <div className="column">
+          <i className="far fa-comment-alt" /> {props.post.likes.length}{" "}
+          <i className="far fa-heart" /> {props.post.comments.length}
         </div>
-        <div class="column has-text-right">{props.post.created_at}</div>
+        <div className="column has-text-right">{date}</div>
       </div>
     </div>
   );
