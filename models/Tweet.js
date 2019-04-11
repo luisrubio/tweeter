@@ -21,8 +21,8 @@ const TweetSchema = new Schema({
   likes: [
     {
       user: {
-        type: Schema.Types.ObjectId,
-        ref: "users"
+        type: Date,
+        default: Date.now
       }
     }
   ],

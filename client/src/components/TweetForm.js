@@ -1,30 +1,31 @@
-import React, { Component } from "react";
+import React from "react";
 import Pulse from "react-reveal/Pulse";
 
-class TweetForm extends Component {
-  render() {
-    return (
-      <Pulse>
-        <div className="columns">
-          <div className="column">
+const TweetForm = props => {
+  return (
+    <Pulse>
+      <div className="columns">
+        <div className="column">
+          <form onSubmit={props.onSubmit}>
             <div className="field">
               <div className="control">
                 <textarea
+                  name="tweet"
+                  value={props.value}
+                  onChange={props.onChange}
                   className="textarea is-info"
                   placeholder="What's happening?"
                 />
               </div>
             </div>
             <div className="has-text-right">
-              <a href="/" className="button is-info">
-                Tweet
-              </a>
+              <button className="button is-info">Tweet</button>
             </div>
-          </div>
+          </form>
         </div>
-      </Pulse>
-    );
-  }
-}
+      </div>
+    </Pulse>
+  );
+};
 
 export default TweetForm;

@@ -36,4 +36,18 @@ router.post("/", (req, res) => {
   newTweet.save().then(tweet => res.json(tweet));
 });
 
+// @route     POST api/tweets/:id/like
+// @desc      like a tweet
+// @access    Public
+router.post("/:id/like", (req, res) => {
+  // find post
+  Tweet.findById(req.params.id)
+    .then(tweet => {
+      tweet.likes.push({ user: Date.now() });
+      tweet.save().then(tweet => res.json(tweet));
+    })
+    .catch(err => res.json({ err: "tweet not found!" }));
+  // push like
+});
+
 module.exports = router;
