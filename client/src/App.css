@@ -74,3 +74,8 @@ body {
 .avatar {
   border-radius: 20px;
 }
+
+.spinner {
+  opacity: 0.4;
+  width: 200px;
+}
