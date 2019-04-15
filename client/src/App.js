@@ -1,18 +1,19 @@
-import React, { Component } from "react";
-import axios from "axios";
+import React, { Component } from 'react';
+import axios from 'axios';
 
-import "./App.css";
+import './App.css';
 
-import Header from "./components/Header";
-import TweetForm from "./components/TweetForm";
-import TweetFeed from "./components/TweetFeed";
+import Header from './components/Header';
+import Footer from './components/Footer';
+import TweetForm from './components/TweetForm';
+import TweetFeed from './components/TweetFeed';
 
 class App extends Component {
   constructor() {
     super();
     this.state = {
       posts: [],
-      tweet: "",
+      tweet: '',
       loading: true
     };
   }
@@ -27,9 +28,9 @@ class App extends Component {
 
   onSubmit = e => {
     e.preventDefault();
-    this.setState({ tweet: "" });
+    this.setState({ tweet: '' });
     axios
-      .post("/api/tweets", { tweet: this.state.tweet })
+      .post('/api/tweets', { tweet: this.state.tweet })
       .then(res => {
         console.log(res.data);
         this.fetchTweets();
@@ -41,7 +42,7 @@ class App extends Component {
     const index = this.state.posts.findIndex(post => post._id === id);
     console.log(index);
     axios
-      .post("/api/tweets/" + id + "/like")
+      .post('/api/tweets/' + id + '/like')
       .then(res => {
         console.log(res.data);
         let posts = [...this.state.posts];
@@ -51,9 +52,13 @@ class App extends Component {
       .catch(err => console.log(err.response.data));
   };
 
+  onClickTop = () => {
+    window.scrollTo(0, 0);
+  };
+
   fetchTweets = e => {
     axios
-      .get("/api/tweets")
+      .get('/api/tweets')
       .then(response => {
         this.setState({ posts: response.data, loading: false });
       })
@@ -65,7 +70,7 @@ class App extends Component {
   render() {
     return (
       <div>
-        <Header />
+        <Header onClickTop={this.onClickTop} />
         <div className="container">
           <TweetForm
             value={this.state.tweet}
@@ -78,6 +83,7 @@ class App extends Component {
             onClick={this.onClick}
           />
         </div>
+        <Footer />
       </div>
     );
   }

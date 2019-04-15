@@ -1,10 +1,12 @@
-import React from "react";
+import React from 'react';
 
-const Header = () => {
+const Header = props => {
   return (
-    <div className="header">
+    <div className="header fixed-top">
       <h1 className="title is-1" data-aos="fade-up">
-        <i className="fas fa-crow" /> Tweeter
+        <a href="#" onClick={props.onClickTop}>
+          <i className="fas fa-crow" /> Tweeter
+        </a>
       </h1>
     </div>
   );

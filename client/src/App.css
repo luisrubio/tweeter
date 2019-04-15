@@ -5,6 +5,7 @@ html {
 body {
   min-height: 100vh;
   color: #fff;
+  margin-top: 120px;
   margin-bottom: 30px;
 }
 
@@ -29,9 +30,37 @@ body {
 
 .header {
   background: #93bcd8;
+  text-align: center;
   padding: 20px;
   margin-bottom: 30px;
-  font-family: "Lobster", cursive;
+  font-family: 'Lobster', cursive;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 999;
+  width: 100%;
+  height: 95px;
+}
+
+.header a:link,
+.header a:visited {
+  color: #fff;
+}
+.tweeter-footer {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  background-color: #222;
+  color: white;
+  text-align: center;
+  font-size: 1.7em;
+  padding: 10px;
+}
+
+.tweeter-footer a:link,
+.tweeter-footer a:visited {
+  color: rgb(96, 149, 202);
 }
 
 .container {
@@ -43,9 +72,14 @@ body {
 }
 
 .item {
-  background: rgb(70, 70, 70);
+  background: rgb(80, 80, 80);
   padding: 10px;
-  margin-bottom: 1px;
+  margin-bottom: 10px;
+  border-radius: 15px;
+}
+
+.item:hover {
+  background: rgb(85, 85, 85);
 }
 
 .message-box {
@@ -61,16 +95,6 @@ body {
   font-size: 0.9em;
 }
 
-.fa-heart {
-  padding-left: 10px;
-}
-
-.fa-heart,
-.fa-comment-alt {
-  padding-right: 2px;
-  cursor: pointer;
-}
-
 .avatar {
   border-radius: 20px;
 }
@@ -78,4 +102,22 @@ body {
 .spinner {
   opacity: 0.4;
   width: 200px;
+}
+
+.like-post {
+  color: #fff;
+  border: 0;
+  background: transparent;
+  padding: 2px 5px;
+  border-radius: 4px;
+}
+
+.like-post:hover {
+  background: rgb(199, 84, 138);
+  cursor: pointer;
+}
+
+.like-post:active {
+  background: #fff;
+  color: rgb(199, 84, 138);
 }
