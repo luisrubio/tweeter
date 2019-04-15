@@ -1,7 +1,7 @@
 # Tweeter
 
 A simplified single-page twitter application built with the MERN stack.
-[Live Demo](https://www.google.com)
+[Live Demo](https://tweeter-demo.herokuapp.com/)
 
 ## Installation
 
