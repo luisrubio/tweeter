@@ -7,7 +7,7 @@ A simplified single-page twitter application built with the MERN stack.
 
 1. Clone this repo
 2. run `npm install` to install dependencies for server
-3. run `npm run clien-install` to install dependencies for client
+3. run `npm run client-install` to install dependencies for client
 4. create key_dev.js file in the config folder and add:
 
 ```
@@ -22,6 +22,6 @@ module.exports = {
 
 ## Technologies Used
 
--ReactJS
--NodeJS/Express
--Mongoose
+- ReactJS
+- NodeJS/Express
+- Mongoose
