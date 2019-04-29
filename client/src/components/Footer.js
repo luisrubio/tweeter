@@ -3,13 +3,13 @@ import React from 'react';
 const Footer = () => {
   return (
     <div className="tweeter-footer">
-      Tweeter App{' '}
+      Tweeter App on{' '}
       <a
         target="_blank"
         rel="noopener noreferrer"
         href="https://github.com/luisrubio/tweeter"
       >
-        <i class="fab fa-github-alt" /> Github
+        Github <i class="fas fa-external-link-square-alt"></i>
       </a>
     </div>
   );

@@ -71,7 +71,7 @@ class App extends Component {
     return (
       <div>
         <Header onClickTop={this.onClickTop} />
-        <div className="container">
+        <main className="container">
           <TweetForm
             value={this.state.tweet}
             onChange={this.onChange}
@@ -82,7 +82,7 @@ class App extends Component {
             loading={this.state.loading}
             onClick={this.onClick}
           />
-        </div>
+        </main>
         <Footer />
       </div>
     );

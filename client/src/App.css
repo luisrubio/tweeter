@@ -54,7 +54,7 @@ body {
   background-color: #222;
   color: white;
   text-align: center;
-  font-size: 1.7em;
+  font-size: 1.2em;
   padding: 10px;
 }
 
@@ -120,4 +120,12 @@ body {
 .like-post:active {
   background: #fff;
   color: rgb(199, 84, 138);
+}
+
+main {
+  padding-bottom: 40px;
+}
+
+a:hover {
+  text-decoration: underline;
 }
