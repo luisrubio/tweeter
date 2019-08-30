@@ -36,6 +36,15 @@ router.post('/', (req, res) => {
   newTweet.save().then(tweet => res.json(tweet));
 });
 
+// @route     PUT api/tweets
+// @desc      create tweet
+// @access    Public
+router.delete('/:id', (req, res) => {
+  Tweet.findByIdAndDelete(req.params.id)
+    .then(tweets => res.json(tweets))
+    .catch(err => res.status(404).json({ notweetsfound: 'No tweets found' }));
+});
+
 // @route     POST api/tweets/:id/like
 // @desc      like a tweet
 // @access    Public

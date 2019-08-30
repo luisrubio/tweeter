@@ -13,6 +13,9 @@ const TweetItem = props => {
       </td>
       <td>{props.post.tweet}</td>
       <td>{moment(props.post.date).format('h:mm A - ll')}</td>
+      <td>
+        <a href="#">x</a>
+      </td>
     </tr>
   );
 };
