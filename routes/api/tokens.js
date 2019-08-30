@@ -3,7 +3,7 @@ const router = express.Router();
 const faker = require('faker');
 
 // Models
-const Tweet = require('../../models/Tweet');
+const Tweet = require('../../models/Token');
 
 // @route     GET api/tweets/test
 // @desc      Test route
@@ -28,26 +28,21 @@ router.get('/', (req, res) => {
 router.post('/', (req, res) => {
   const newTweet = new Tweet({
     name: req.body.name,
-    handle: req.body.status,
-    avatar: req.body.amount,
-    tweet: req.body.tweet
+    amount: req.body.amount
   });
 
   newTweet.save().then(tweet => res.json(tweet));
 });
 
-// @route     POST api/tweets/:id/like
-// @desc      like a tweet
+// @route     PUT api/tweets
+// @desc      create tweet
 // @access    Public
-router.post('/:id/like', (req, res) => {
-  // find post
-  Tweet.findById(req.params.id)
-    .then(tweet => {
-      tweet.likes.push({ user: Date.now() });
-      tweet.save().then(tweet => res.json(tweet));
-    })
-    .catch(err => res.json({ err: 'tweet not found!' }));
-  // push like
+router.put('/:id', (req, res) => {
+  Tweet.findByIdAndUpdate(req.params.id, req.body)
+    .then(tweets => res.json(tweets))
+    .catch(err => res.status(404).json({ notweetsfound: 'No tweets found' }));
+
+  //   newTweet.save().then(tweet => res.json(tweet));
 });
 
 module.exports = router;

@@ -14,6 +14,9 @@ class App extends Component {
     this.state = {
       posts: [],
       tweet: '',
+      amount: 0,
+      status: 1,
+      name: 0,
       loading: true
     };
   }
@@ -30,7 +33,12 @@ class App extends Component {
     e.preventDefault();
     this.setState({ tweet: '' });
     axios
-      .post('/api/tweets', { tweet: this.state.tweet })
+      .post('/api/tweets', {
+        tweet: this.state.tweet,
+        amount: this.state.amount,
+        status: this.state.status,
+        name: this.state.name
+      })
       .then(res => {
         console.log(res.data);
         this.fetchTweets();
@@ -70,18 +78,29 @@ class App extends Component {
   render() {
     return (
       <div>
-        <Header onClickTop={this.onClickTop} />
+        <Header />
         <main className="container">
           <TweetForm
             value={this.state.tweet}
+            status={this.state.status}
+            name={this.state.name}
+            amount={this.state.amount}
             onChange={this.onChange}
             onSubmit={this.onSubmit}
           />
-          <TweetFeed
-            posts={this.state.posts}
-            loading={this.state.loading}
-            onClick={this.onClick}
-          />
+          <table class="table table-sm">
+            {/* <tr className="item">
+              <td>Name</td>
+              <td>Amount</td>
+              <td>Reason</td>
+              <td>Date</td>
+            </tr> */}
+            <TweetFeed
+              posts={this.state.posts}
+              loading={this.state.loading}
+              onClick={this.onClick}
+            />
+          </table>
         </main>
         <Footer />
       </div>
