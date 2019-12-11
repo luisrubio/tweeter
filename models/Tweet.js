@@ -1,4 +1,4 @@
-const mongoose = require("mongoose");
+const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 // create schema
@@ -55,4 +55,4 @@ const TweetSchema = new Schema({
   }
 });
 
-module.exports = Tweet = mongoose.model("tweet", TweetSchema);
+module.exports = Tweet = mongoose.model('tweet', TweetSchema);
