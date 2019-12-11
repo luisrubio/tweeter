@@ -34,8 +34,8 @@ const TokenSchema = new Schema({
         default: false
       },
       timeSent: {
-        type: Number,
-        default: Date.now()
+        type: Date,
+        default: Date.now
       }
     }
   ],
