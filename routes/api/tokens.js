@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 const faker = require('faker');
 const moment = require('moment');
-
+const momoentTimezone = require('moment-timezone');
 // Models
 const Tweet = require('../../models/Token');
 
@@ -78,7 +78,14 @@ router.get('/info', (req, res) => {
   const now = moment().week() - 1;
   const colorID = weekColor[now];
 
-  const time = parseInt(moment().format('kmm'));
+  const time = parseInt(
+    // moment()
+    //   .tz('America/Chicago')
+    //   .format('kmm')
+    moment()
+      .tz('America/Chicago')
+      .format('kmm')
+  );
   let blockID = 3;
   if (time >= 530 && time < 1500) {
     blockID = 0;
@@ -93,7 +100,8 @@ router.get('/info', (req, res) => {
     color: colors[colorID],
     blockID: blockID,
     block: block[blockID],
-    now: now
+    now: now,
+    time
   });
 });
 
