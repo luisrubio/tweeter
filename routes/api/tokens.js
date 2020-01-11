@@ -218,6 +218,36 @@ router.get('/cat/:id', (req, res) => {
     .catch(err => res.status(404).json({ notweetsfound: 'No tweets found' }));
 });
 
+// THIS ONE GETS ALL OF THEM
+// @route     GET api/cat/:id
+// @desc      get tasks
+// @access    Public
+router.get('/catbat/:id', (req, res) => {
+  Tweet.find()
+    .sort({ user: 1 })
+    .then(tweets => {
+      let tasks = [];
+      let newTweets = [...tweets];
+      newTweets.forEach(tweet => {
+        tweet.tasks.forEach(task => {
+          let newTask = JSON.parse(JSON.stringify(task));
+
+          newTask.diff = Date.now() - task.timeSent.getTime();
+
+          newTask.userID = tweet.user;
+          if (
+            // !task.completed &&
+            req.params.id == task.blockID
+          ) {
+            tasks.push(newTask);
+          }
+        });
+      });
+      res.json(tasks);
+    })
+    .catch(err => res.status(404).json({ notweetsfound: 'No tweets found' }));
+});
+
 // @route     GET api/tokens/tasks
 // @desc      get tasks
 // @access    Public
@@ -317,6 +347,48 @@ router.get('/cat/:id/true', (req, res) => {
       res.json(tasks);
     })
     .catch(err => res.status(404).json({ notweetsfound: 'No tweets found' }));
+});
+
+// @route     GET api/tweets/counter
+// @desc      FIND COUNTER ANDREA
+// @access    Public
+router.get('/counter', (req, res) => {
+  Tweet.findById('5de84dabb68efb1cf42c9252')
+    .then(tweets => res.json(tweets))
+    .catch(err => res.status(404).json({ notweetsfound: 'No tweets found' }));
+});
+
+// @route     PUT api/tweets
+// @desc      create tweet
+// @access    Public
+router.put('/counterup', (req, res) => {
+  Tweet.findByIdAndUpdate('5de84dabb68efb1cf42c9252', { $inc: { amount: 1 } })
+    .then(tweets => res.json(tweets))
+    .catch(err => res.status(404).json({ notweetsfound: 'No tweets found' }));
+
+  // Tweet.save().then(tweet => res.json(tweet));
+});
+
+// @route     PUT api/tweets
+// @desc      create tweet
+// @access    Public
+router.put('/counterre', (req, res) => {
+  Tweet.findByIdAndUpdate('5de84dabb68efb1cf42c9252', { amount: 5 })
+    .then(tweets => res.json(tweets))
+    .catch(err => res.status(404).json({ notweetsfound: 'No tweets found' }));
+
+  // Tweet.save().then(tweet => res.json(tweet));
+});
+
+// @route     PUT api/tweets
+// @desc      create tweet
+// @access    Public
+router.put('/counterdown', (req, res) => {
+  Tweet.findByIdAndUpdate('5de84dabb68efb1cf42c9252', { $inc: { amount: -1 } })
+    .then(tweets => res.json(tweets))
+    .catch(err => res.status(404).json({ notweetsfound: 'No tweets found' }));
+
+  // Tweet.save().then(tweet => res.json(tweet));
 });
 
 // @route     PUT api/tweets

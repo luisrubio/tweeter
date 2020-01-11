@@ -1,47 +1,28 @@
 import React, { Component } from 'react';
-import Axios from 'axios';
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+
 import './App.css';
-
-import Button from './components/common/Button';
-
-class App extends Component {
-  constructor() {
-    super();
-    this.state = {
-      tasks: [
-        {
-          name: 'Morning Routine',
-          icon: 'fa-user-astronaut',
-          completed: false,
-          counter: 0
-        }
-      ]
-    };
-  }
-
-  onClick = x => {
-    let tasks = this.state.tasks;
-    tasks[x].counter = tasks[x].counter + 1;
-    if (tasks[x].counter >= 2) {
-      tasks[x].completed = true;
-    }
-    this.setState({ tasks });
-  };
-
+import Navbar from './components/Navbar';
+import Charts from './components/Charts';
+import Tasks from './components/Tasks';
+import SheepController from './components/Sheep';
+export default class App extends Component {
   render() {
     return (
-      <div className="container-fluid">
-        <h1 className="text-center pb-1">Simple Habits</h1>
-        <Button
-          icon="fa-user-astronaut"
-          name="Morning Routine"
-          completed={this.state.tasks[0].completed}
-          onClick={() => this.onClick(0)}
-          counter={this.state.tasks[0].counter}
-        />
+      <div className="container">
+        <Router>
+          {/* <Navbar />
+          <Switch>
+            <Route path="/" exact>
+              <Tasks />
+            </Route>
+            <Route path="/charts">
+              <Charts />
+            </Route>
+          </Switch> */}
+          <SheepController />
+        </Router>
       </div>
     );
   }
 }
-
-export default App;

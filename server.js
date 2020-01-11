@@ -2,6 +2,7 @@ const express = require('express');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 const path = require('path');
+const axios = require('axios');
 
 const tweets = require('./routes/api/tweets');
 const tokens = require('./routes/api/tokens');
@@ -46,5 +47,23 @@ if (process.env.NODE_ENV === 'production') {
     res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html'));
   });
 }
+
+const taskmaster = () => {
+  axios
+    .get('https://safe-anchorage-33083.herokuapp.com/api/tokens/info')
+    .then(function(response) {
+      // handle success
+      console.log(response.data.color);
+    })
+    .catch(function(error) {
+      // handle error
+      console.log(error);
+    });
+};
+
+// taskmaster();
+// setInterval(() => {
+//   taskmaster();
+// }, 1000);
 
 app.listen(port, () => console.log(`Tweeter App listening on port ${port}!`));

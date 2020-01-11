@@ -12,8 +12,9 @@ const TokenSchema = new Schema({
     required: true
   },
   amount: {
-    type: String,
-    required: true
+    type: Number,
+    required: true,
+    default: 0
   },
   tasks: [
     {
