@@ -35,9 +35,6 @@ mongoose
     console.log(err);
   });
 
-app.use('/api/tweets', tweets);
-app.use('/api/tokens', tokens);
-
 // static assets
 if (process.env.NODE_ENV === 'production') {
   // set static folder
@@ -48,22 +45,7 @@ if (process.env.NODE_ENV === 'production') {
   });
 }
 
-const taskmaster = () => {
-  axios
-    .get('https://safe-anchorage-33083.herokuapp.com/api/tokens/info')
-    .then(function(response) {
-      // handle success
-      console.log(response.data.color);
-    })
-    .catch(function(error) {
-      // handle error
-      console.log(error);
-    });
-};
-
-// taskmaster();
-// setInterval(() => {
-//   taskmaster();
-// }, 1000);
+app.use('/api/tweets', tweets);
+app.use('/api/tokens', tokens);
 
 app.listen(port, () => console.log(`Tweeter App listening on port ${port}!`));
