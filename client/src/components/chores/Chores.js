@@ -10,18 +10,9 @@ class Chores extends Component {
       info: {}
     };
   }
-  componentDidMount() {
-    const url = '';
-
-    // get general info / debug info
-    axios.get(url + '/api/tokens/info').then(res => {
-      this.setState({ info: res.data });
-      console.log(this.state.info);
-    });
-  }
 
   render() {
-    const color = this.state.info.colorID;
+    const color = this.props.info.week;
     let taskJuan = 'Feed dog';
     let taskJose = 'Walk dog / clean cage';
     if (color === 1 || color === 3) {
@@ -67,11 +58,11 @@ class Chores extends Component {
     const jackelineTask = [taskB, taskA, taskD, taskC];
 
     return (
-      <div className="container-fluid">
+      <div className="container-fluid p-0">
         <div className="row mm">
           <div className="col-2">
             <Link to="/">
-              <div className="tile-sm">
+              <div onClick={this.props.onClick} className="tile-sm">
                 <div>Home</div>
                 <div className="tile-icon p-1">
                   <i className="fas fa-home op"></i>
@@ -81,8 +72,8 @@ class Chores extends Component {
             </Link>
           </div>
           <div className="col-2">
-            <div className={'tile-sm ' + this.state.info.color}>
-              <div>week {this.state.info.color}</div>
+            <div className={'tile-sm ' + this.props.info.weekColor}>
+              <div>week {this.props.info.weekColor}</div>
               <div className="text-icon p-1">
                 <i class="fas fa-tint"></i>
               </div>
@@ -143,8 +134,7 @@ class Chores extends Component {
             <div className="tile double">
               <h2>Alfredo</h2>
               <div className="text-left">
-                <div>- Sweep floors</div>
-                <div>- Mop floors (bi-weekly)</div>
+                <div>- Sweep/Mop floors</div>
                 {alfredoTask[color]}
               </div>
             </div>

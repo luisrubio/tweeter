@@ -12,7 +12,7 @@ class Modal extends Component {
     };
   }
   componentDidMount() {
-    const url = '';
+    const url = 'https://safe-anchorage-33083.herokuapp.com';
     console.log(this.props.match.params.id);
     const code = this.props.match.params.id;
     // get bus info

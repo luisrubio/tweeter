@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 
 export default function Tile(props) {
   return (
-    <div className="col-2">
+    <div className="col-2" onClick={props.onClick}>
       <Link to={props.to}>
         <div className="tile">
           <div className={'bar ' + props.progress}></div>

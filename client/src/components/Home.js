@@ -17,6 +17,7 @@ import Youtube from './youtube/Youtube';
 import Sheep from './sheep/Sheep';
 import Infantil from './youtube/Infantil';
 import Intermission from './youtube/Intermission';
+import Chores from './chores/Chores';
 
 class Home extends Component {
   constructor() {
@@ -37,17 +38,35 @@ class Home extends Component {
       catBag: [],
       catMath: [],
       time: new Date(),
-      clockCode: 0
+      clockCode: 0,
+      choresDisplayTimer: 0
     };
   }
 
   componentDidMount() {
     this.update();
     this.interval = setInterval(this.update, 5000);
+    this.timah = setInterval(this.updateTimah, 1000);
   }
   componentWillUnmount() {
     clearInterval(this.interval);
+    clearInterval(this.timah);
   }
+
+  onClickTab = () => {
+    this.setState({ choresDisplayTimer: 15 });
+  };
+
+  clickHome = () => {
+    this.setState({ choresDisplayTimer: 0 });
+  };
+
+  updateTimah = () => {
+    const cDT = this.state.choresDisplayTimer - 1;
+
+    this.setState({ choresDisplayTimer: cDT });
+  };
+
   update = () => {
     // Clock code
     const addZero = i => {
@@ -67,7 +86,7 @@ class Home extends Component {
       clockCode
     });
 
-    const url = '';
+    const url = 'https://safe-anchorage-33083.herokuapp.com';
     // get users stats
     axios.get(url + '/api/tokens/ssj').then(res => {
       this.setState({ users: res.data, loading: false });
@@ -230,14 +249,27 @@ class Home extends Component {
       );
     }
 
+    let choresBox;
+
+    if (this.state.choresDisplayTimer > 0) {
+      choresBox = (
+        <div>
+          <Chores info={this.props.info} onClick={this.clickHome} />
+        </div>
+      );
+    } else {
+      choresBox = '';
+    }
+
     return (
       <div className="container-fluid">
+        {choresBox}
         <div className="row">
           <Tile
             top="My Tasks"
-            bot={'week ' + this.state.info.color}
+            bot={'week ' + this.props.info.weekColor}
             icon="fas fa-list op"
-            to="/chores"
+            onClick={this.onClickTab}
           />
           <SolidTile
             data={this.state.catFeed}
@@ -254,7 +286,6 @@ class Home extends Component {
           <SolidTile data="" top="" icon="" to="" />
           {/* <Weather /> */}
 
-          {/* <Tile top="Daily Reading" bot="" icon="fas fa-book-open op" to="/" /> */}
           <Clock />
           {tasker}
           {alt}
